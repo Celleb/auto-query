@@ -1,0 +1,36 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist/build",
+    "module": "commonjs",
+    "target": "ES2019",
+    "lib": ["es6"],
+    "sourceMap": true,
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noImplicitReturns": true,
+    "resolveJsonModule": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true, // Report errors on unused locals
+    "noUnusedParameters": true,
+    "baseUrl": ".",
+    "paths": {
+      "@enums": ["./src/enums"],
+      "@utils/*": ["./src/utils/*"],
+      "@shared/*": ["./src/shared/*"],
+      "src/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build", "**/*.spec.ts", "./scripts"],
+  "types": ["typePatches"]
+}

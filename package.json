@@ -1,0 +1,37 @@
+{
+  "name": "@celleb/mongoorrhea",
+  "version": "1.0.0",
+  "description": "Resful query builder for mongodb with mongoose",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Celleb/mongoorrhea.git"
+  },
+  "keywords": [
+    "Query",
+    "builder",
+    "mongodb",
+    "mongoose",
+    "rest"
+  ],
+  "author": "Jonas <celleb@mrcelleb.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Celleb/mongoorrhea/issues"
+  },
+  "homepage": "https://github.com/Celleb/mongoorrhea#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "@types/node": "^14.0.13",
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  }
+}
