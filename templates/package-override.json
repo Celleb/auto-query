@@ -1,0 +1,7 @@
+{
+  "name": "@celleb/js-utils",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {},
+  "devDependencies": {}
+}
