@@ -18,17 +18,22 @@ export class QueryBuilder<D extends Document> {
         return $query;
     }
 
-    private applyFilters<K extends QueryFilter, P extends QueryParams[K]>(
+    private applyFilters<K extends QueryFilter, P extends Required<QueryParams>[K]>(
         param: P,
         $query: Query<any>,
         filter: K
     ) {
         switch (filter) {
             case 'match':
-                return param ? this.match($query, param as QueryParams['match']) : $query;
+                return this.match($query, param as QueryParams['match']);
+            case 'sort':
+                return this.sort($query, param as string);
+            case 'skip':
+                return this.skip($query, param as number);
             case 'limit':
-                return param ? this.limit($query, param as number) : $query;
-
+                return this.limit($query, param as number);
+            case 'select':
+                return this.select($query, param as string[]);
             default:
                 return $query;
         }
@@ -42,7 +47,9 @@ export class QueryBuilder<D extends Document> {
             : this.defaultOrder;
 
         for (const filter of filters) {
-            $query = this.applyFilters(queryParams[filter], $query, filter);
+            if (![undefined, null, ''].includes(queryParams[filter] as any)) {
+                $query = this.applyFilters(queryParams[filter]!, $query, filter);
+            }
         }
 
         return $query;
@@ -88,5 +95,17 @@ export class QueryBuilder<D extends Document> {
 
     private limit($query: Query<any>, limit: number) {
         return $query.limit(limit);
+    }
+
+    private select($query: Query<any>, select: string[]) {
+        return $query.select(select);
+    }
+
+    private skip($query: Query<any>, limit: number) {
+        return $query.skip(limit);
+    }
+
+    private sort($query: Query<any>, sort: string) {
+        return $query.sort(sort);
     }
 }
