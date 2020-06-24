@@ -7,6 +7,4 @@
  * @license MIT
  */
 
-import * as QueryBuilder from './query-builder';
 export * from './query-builder';
-export default QueryBuilder;

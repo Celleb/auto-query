@@ -10,8 +10,8 @@
     "preversion": "npm run test",
     "version": "npm run build && npm run package && git add .",
     "postversion": "git push && git push --tags",
-    "test": "npx jest",
-    "test:watch": "npx jest --watch"
+    "test": "npx  jest --runInBand",
+    "test:watch": "npx jest --runInBand --watch"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^3.3.0",
     "jest": "^26.0.1",
+    "mongodb-memory-server": "^6.6.1",
     "ts-jest": "^26.1.0",
     "typescript": "^3.9.5"
   },
