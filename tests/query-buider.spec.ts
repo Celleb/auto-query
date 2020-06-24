@@ -7,9 +7,9 @@
  * @license MIT
  */
 
+import { MongoDbConnection } from './mongo-db';
 import { QueryBuilder } from '../src';
 import mongoose, { Schema } from 'mongoose';
-import { MongoDbConnection } from './mongo-db';
 
 let qb!: QueryBuilder<any>;
 
@@ -40,6 +40,7 @@ const User = mongoose.model('User', userSchema);
 
 describe('QueryBuilder tests', () => {
     beforeAll(async () => {
+        // connect to database
         return await MongoDbConnection.connect();
     });
     beforeEach(() => {
