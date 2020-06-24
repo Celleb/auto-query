@@ -264,10 +264,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@celleb/js-utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@celleb/js-utils/-/js-utils-1.0.0.tgz#358d3c8968cd9af776726186e548b97a1be32b20"
-  integrity sha512-Nl0XunAnclMte/SZhj2tG1uroQI9HdYepbFS7AMoQnYuaCr8tBa7igXWOHHnpO61KSgPDKLRFt/FaLt4ybV84w==
+"@celleb/js-utils@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@celleb/js-utils/-/js-utils-1.1.1.tgz#c99754717e9d00a777dbaf68ef106bf9cb943615"
+  integrity sha512-QgAWP53IC26KxHUdFBnOdP3cwShr9u54krx7mj1xWGgQG+HlunH395H8bgoew1UuF4la2tnQP7NMA2OvBB4M+Q==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"

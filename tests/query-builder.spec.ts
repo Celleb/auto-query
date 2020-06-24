@@ -1,5 +1,5 @@
 /**
- * query-buider.spec
+ * query-builder.spec
  *
  * @author Jonas Tomanga <celleb@mrcelleb.com>
  * @copyright (c) 2020 Jonas Tomanga
@@ -38,17 +38,44 @@ const dictionary = {
 
 const User = mongoose.model('User', userSchema);
 
+const collection = [
+    {
+        name: 'Jonas',
+        surname: 'Tomanga',
+        likes: ['Football', 'Volleyball'],
+        car: [
+            {
+                model: 'Kalahari',
+                year: 2007,
+            },
+        ],
+    },
+    {
+        name: 'Jon',
+        surname: 'Manga',
+        likes: ['Dancing', 'Volleyball'],
+        car: [
+            {
+                model: 'Oshakati',
+                year: 1900,
+            },
+        ],
+    },
+];
+
 describe('QueryBuilder tests', () => {
     beforeAll(async () => {
         // connect to database
         return await MongoDbConnection.connect();
     });
-    beforeEach(() => {
+    beforeEach(async () => {
+        await User.insertMany(collection);
         qb = new QueryBuilder(User, dictionary);
+        return;
     });
 
     afterEach(async () => {
-        return MongoDbConnection.clearCollections();
+        return await MongoDbConnection.clearCollections();
     });
 
     afterAll(async () => {
@@ -59,15 +86,16 @@ describe('QueryBuilder tests', () => {
         expect(qb.build).toBeDefined;
     });
 
-    it('must return a instance of mongoose Query', () => {
+    it('must return a matching result', async () => {
         const query = qb.build({
             match: { firstName: 'Jonas' },
             sort: '-firstName',
-            skip: 1,
             limit: 1,
             select: ['firstName'],
             order: ['match'],
         });
-        expect(query).toBeInstanceOf(mongoose.Query);
+        const results = await query.exec();
+        expect(results.length).toEqual(1);
+        expect(results[0].toObject().name).toEqual('Jonas');
     });
 });

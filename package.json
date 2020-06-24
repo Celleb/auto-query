@@ -30,6 +30,10 @@
     "url": "https://github.com/Celleb/mongoorrhea/issues"
   },
   "homepage": "https://github.com/Celleb/mongoorrhea#readme",
+  "dependencies": {
+    "@celleb/js-utils": "^1.1.1",
+    "mongoose": "^5.9.19"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.0",
     "@types/mongoose": "^5.7.27",
@@ -40,9 +44,5 @@
     "mongodb-memory-server": "^6.6.1",
     "ts-jest": "^26.1.0",
     "typescript": "^3.9.5"
-  },
-  "dependencies": {
-    "@celleb/js-utils": "^1.0.0",
-    "mongoose": "^5.9.19"
   }
 }
