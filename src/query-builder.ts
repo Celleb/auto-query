@@ -54,7 +54,6 @@ export class QueryBuilder<M extends Model<Document>> {
         const filters = queryParams.order
             ? sortByReference(this.defaultOrder, [...queryParams.order])
             : this.defaultOrder;
-
         for (const filter of filters) {
             if (![undefined, null, ''].includes(queryParams[filter] as any)) {
                 $query = this.applyFilters(queryParams[filter]!, $query, filter);
