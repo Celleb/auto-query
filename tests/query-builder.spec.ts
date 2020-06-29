@@ -28,12 +28,15 @@ const userSchema = new Schema({
             name: String,
         },
     ],
+    goal: {
+        type: String,
+        alias: 'aim',
+    },
 });
 
 const dictionary = {
     firstName: 'name',
     lastName: 'surname',
-    hobbies: 'likes',
     'vehicle.model': 'car.model',
     'vehicle.year': 'car.year',
 };
@@ -51,6 +54,7 @@ const collection = [
                 year: 2007,
             },
         ],
+        aim: 'Booting',
     },
     {
         name: 'Jon',
@@ -117,7 +121,6 @@ describe('QueryBuilder tests', () => {
             skip: 1,
             limit: 1,
             select: ['firstName', 'lastName'],
-            order: ['match'],
         });
         const results = await query.exec();
         expect(results.length).toEqual(1);
@@ -145,12 +148,71 @@ describe('QueryBuilder tests', () => {
 
     it('returns a match based on an item in an array, skip 1 and limit 1', async () => {
         const query = qb.build({
-            match: { hobbies: 'Dancing' },
+            match: { likes: 'Dancing' },
             skip: 1,
             limit: 1,
         });
         const results = await query.exec();
         expect(results.length).toEqual(1);
         expect(results[0].toObject().name).toEqual('Jane');
+        expect(results[0].toObject().likes.includes('Dancing')).toEqual(true);
+    });
+
+    it('returns a match based on alias key', async () => {
+        const query = qb.build({
+            match: { goal: 'Booting' },
+        });
+        const results = await query.exec();
+        expect(results.length).toEqual(1);
+        expect(results[0].toObject().name).toEqual('Jonas');
+        expect(results[0].toObject({ virtuals: true }).aim).toEqual('Booting');
+    });
+
+    it('returns a match of gt', async () => {
+        const query = qb.build({
+            match: { 'vehicle.year': '>2007' },
+        });
+        const results = await query.exec();
+        expect(results.length).toEqual(2);
+    });
+
+    it('returns a match of gte', async () => {
+        const query = qb.build({
+            match: { 'vehicle.year': '>:2007' },
+        });
+        const results = await query.exec();
+        expect(results.length).toEqual(3);
+    });
+
+    it('returns a match of lt', async () => {
+        const query = qb.build({
+            match: { 'vehicle.year': '<2007' },
+        });
+        const results = await query.exec();
+        expect(results.length).toEqual(1);
+    });
+
+    it('returns a match of lte', async () => {
+        const query = qb.build({
+            match: { 'vehicle.year': '<:2007' },
+        });
+        const results = await query.exec();
+        expect(results.length).toEqual(2);
+    });
+
+    it('returns a match of not', async () => {
+        const query = qb.build({
+            match: { lastName: '!Tomanga' },
+        });
+        const results = await query.exec();
+        expect(results.length).toEqual(3);
+    });
+
+    it('returns a match of in and nin', async () => {
+        const query = qb.build({
+            match: { likes: ['!Volleyball', 'Dancing'] },
+        });
+        const results = await query.exec();
+        expect(results.length).toEqual(2);
     });
 });

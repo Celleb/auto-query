@@ -10,11 +10,10 @@
 import { Dictionary, QueryValue, QueryFilter, QueryParams } from './@types';
 import { Query, Model, Document } from 'mongoose';
 import { shallowTransform } from '@celleb/js-utils/obj';
-import { sortByReference } from '@celleb/js-utils/arrays';
 import { RegExpOps } from './operators';
 
 export class QueryBuilder<M extends Model<Document>> {
-    private defaultOrder: QueryFilter[] = ['match', 'sort', 'skip', 'limit', 'select'];
+    private filters: QueryFilter[] = ['match', 'sort', 'skip', 'limit', 'select'];
     constructor(private model: M, private dictionary: Dictionary = {}) {}
 
     private match($query: Query<any>, match?: QueryParams['match']): Query<any> {
@@ -50,11 +49,7 @@ export class QueryBuilder<M extends Model<Document>> {
 
     build<P extends QueryParams>(queryParams: P) {
         let $query = this.model.find({});
-
-        const filters = queryParams.order
-            ? sortByReference(this.defaultOrder, [...queryParams.order])
-            : this.defaultOrder;
-        for (const filter of filters) {
+        for (const filter of this.filters) {
             if (![undefined, null, ''].includes(queryParams[filter] as any)) {
                 $query = this.applyFilters(queryParams[filter]!, $query, filter);
             }
@@ -97,8 +92,10 @@ export class QueryBuilder<M extends Model<Document>> {
 
             return $query;
         }
-
-        return $query.where(key).equals(value);
+        $query = $query.where(key);
+        return RegExpOps.not.test(`${value}`)
+            ? $query.ne(`${value}`.replace(RegExpOps.not, ''))
+            : $query.equals(value);
     }
 
     private limit($query: Query<any>, limit: number) {
@@ -106,7 +103,7 @@ export class QueryBuilder<M extends Model<Document>> {
     }
 
     private select($query: Query<any>, select: string[]) {
-        return $query.select(select.map((i) => this.dictionary[i]).filter((i) => !!i));
+        return $query.select(select.map((i) => this.dictionary[i] || i).filter((i) => !!i));
     }
 
     private skip($query: Query<any>, limit: number) {
@@ -116,7 +113,7 @@ export class QueryBuilder<M extends Model<Document>> {
     private sort($query: Query<any>, sort: string) {
         const match = /^(\-|\+)/;
         const sign = match.test(sort) ? sort.slice(0, 1) : '';
-        const key = this.dictionary[sort.replace(match, '')];
+        const key = this.dictionary[sort.replace(match, '')] || sort.replace(match, '');
         if (!key) {
             return $query;
         }

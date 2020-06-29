@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/Celleb/mongoorrhea#readme",
   "dependencies": {
-    "@celleb/js-utils": "^1.1.1",
+    "@celleb/js-utils": "^1.2.0",
     "mongoose": "^5.9.19"
   },
   "devDependencies": {
