@@ -1,6 +1,6 @@
 {
   "name": "@celleb/mongoorrhea",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Restful query builder for mongodb with mongoose",
   "main": "./index.js",
   "scripts": {},
