@@ -1,0 +1,30 @@
+{
+  "name": "@celleb/mongoorrhea",
+  "version": "0.0.1",
+  "description": "Restful query builder for mongodb with mongoose",
+  "main": "./index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Celleb/mongoorrhea.git"
+  },
+  "keywords": [
+    "Query",
+    "builder",
+    "mongodb",
+    "mongoose",
+    "rest"
+  ],
+  "author": "Jonas <celleb@mrcelleb.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Celleb/mongoorrhea/issues"
+  },
+  "homepage": "https://github.com/Celleb/mongoorrhea#readme",
+  "dependencies": {
+    "@celleb/js-utils": "^1.2.0",
+    "mongoose": "^5.9.19"
+  },
+  "devDependencies": {},
+  "types": "./index.d.ts"
+}

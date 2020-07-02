@@ -1,10 +1,10 @@
 {
   "name": "@celleb/mongoorrhea",
   "version": "0.0.1",
-  "description": "Resful query builder for mongodb with mongoose",
+  "description": "Restful query builder for mongodb with mongoose",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx tsc && npm run package",
     "build:watch": "npx tsc --watch",
     "package": "node ./scripts/override-package.js",
     "preversion": "npm run test",

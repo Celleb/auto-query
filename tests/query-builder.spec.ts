@@ -8,7 +8,7 @@
  */
 
 import { MongoDbConnection } from './mongo-db';
-import { QueryBuilder } from '../src';
+import { QueryBuilder } from '../dist';
 import mongoose, { Schema } from 'mongoose';
 
 let qb!: QueryBuilder<any>;
