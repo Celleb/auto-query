@@ -107,7 +107,7 @@ describe('QueryBuilder tests', () => {
     });
 
     afterAll(async () => {
-        return await MongoDbConnection.connect();
+        return await MongoDbConnection.closeDatabase();
     });
 
     it('must be defined', () => {
