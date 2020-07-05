@@ -1,0 +1,7 @@
+{
+  "name": "@celleb/mongoorrhea",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {},
+  "devDependencies": {}
+}
