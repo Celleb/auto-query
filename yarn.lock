@@ -264,10 +264,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@celleb/js-utils@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@celleb/js-utils/-/js-utils-1.1.1.tgz#c99754717e9d00a777dbaf68ef106bf9cb943615"
-  integrity sha512-QgAWP53IC26KxHUdFBnOdP3cwShr9u54krx7mj1xWGgQG+HlunH395H8bgoew1UuF4la2tnQP7NMA2OvBB4M+Q==
+"@celleb/js-utils@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@celleb/js-utils/-/js-utils-1.2.0.tgz#6830e4586bb6ab6cd3b5b0f8db397da97c7fd72b"
+  integrity sha512-7/WGcdZjJH0nHJTWnAt5Cz6oEG+BF7iaGv05t65SsvaQNfF3ByusB5McjGlJhJnubgyMTXTYXqXOQbRYCkVVlA==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -2681,9 +2681,9 @@ lodash.sortby@^4.7.0:
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
 
 lodash@^4.17.13, lodash@^4.17.15:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 make-dir@^3.0.0, make-dir@^3.0.2:
   version "3.1.0"
