@@ -1,5 +1,4 @@
 /**
- * query-builder.spec
  *
  * @author Jonas Tomanga <celleb@mrcelleb.com>
  * @copyright (c) 2020 Jonas Tomanga
@@ -8,10 +7,10 @@
  */
 
 import { MongoDbConnection } from './mongo-db';
-import { QueryBuilder } from '../dist';
+import { AutoQuery } from '../dist';
 import mongoose, { Schema } from 'mongoose';
 
-let qb!: QueryBuilder<any>;
+let qb!: AutoQuery<any>;
 
 const userSchema = new Schema({
     name: String,
@@ -91,14 +90,14 @@ const collection = [
     },
 ];
 
-describe('QueryBuilder tests', () => {
+describe('AutoQuery tests', () => {
     beforeAll(async () => {
         // connect to database
         return await MongoDbConnection.connect();
     });
     beforeEach(async () => {
         await User.insertMany(collection);
-        qb = new QueryBuilder(User, dictionary);
+        qb = new AutoQuery(User, dictionary);
         return;
     });
 
