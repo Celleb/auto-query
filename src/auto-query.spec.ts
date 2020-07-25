@@ -1,5 +1,4 @@
 /**
- * query-builder.spec
  *
  * @author Jonas Tomanga <celleb@mrcelleb.com>
  * @copyright (c) 2020 Jonas Tomanga
@@ -7,10 +6,10 @@
  * @license MIT
  */
 
-import { QueryBuilder } from './query-builder';
+import { AutoQuery } from './auto-query';
 import mongoose, { Schema } from 'mongoose';
 
-let qb!: QueryBuilder<any>;
+let qb!: AutoQuery<any>;
 
 const userSchema = new Schema({
     name: String,
@@ -37,13 +36,13 @@ const dictionary = {
 
 const User = mongoose.model('User', userSchema);
 
-describe('QueryBuilder', () => {
+describe('AutoQuery', () => {
     it('must be defined', () => {
-        expect(QueryBuilder).toBeDefined;
+        expect(AutoQuery).toBeDefined;
     });
     describe('.build', () => {
         beforeEach(() => {
-            qb = new QueryBuilder(User, dictionary);
+            qb = new AutoQuery(User, dictionary);
         });
 
         it('must be defined', () => {

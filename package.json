@@ -1,11 +1,11 @@
 {
-  "name": "@celleb/mongoorrhea",
+  "name": "@celleb/auto-query",
   "version": "1.1.1",
   "description": "Restful query builder for mongodb with mongoose",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc && npm run package",
-    "build:watch": "npx tsc --watch",
+    "build": "rm -rf dist/* && npx tsc && npm run package",
+    "build:watch": "rm -rf dist/* &&  npx tsc --watch",
     "package": "node ./scripts/override-package.js",
     "preversion": "npm run test",
     "version": "npm run build && npm run package && git add .",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Celleb/mongoorrhea.git"
+    "url": "git+https://github.com/Celleb/auto-query.git"
   },
   "keywords": [
     "Query",
@@ -27,9 +27,9 @@
   "author": "Jonas <celleb@mrcelleb.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Celleb/mongoorrhea/issues"
+    "url": "https://github.com/Celleb/auto-query/issues"
   },
-  "homepage": "https://github.com/Celleb/mongoorrhea#readme",
+  "homepage": "https://github.com/Celleb/auto-query#readme",
   "dependencies": {
     "@celleb/js-utils": "^1.2.0",
     "mongoose": "^5.9.19"

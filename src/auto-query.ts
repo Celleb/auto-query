@@ -1,5 +1,4 @@
 /**
- * query-builder
  *
  * @author Jonas Tomanga <celleb@mrcelleb.com>
  * @copyright (c) 2020 Jonas Tomanga
@@ -12,7 +11,7 @@ import { Query, Model, Document } from 'mongoose';
 import { shallowTransform } from '@celleb/js-utils/obj';
 import { RegExpOps } from './operators';
 
-export class QueryBuilder<M extends Model<Document>> {
+export class AutoQuery<M extends Model<Document>> {
     private filters: QueryFilter[] = ['match', 'sort', 'skip', 'limit', 'select'];
     constructor(private model: M, private dictionary: Dictionary = {}) {}
 

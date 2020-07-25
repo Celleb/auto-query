@@ -7,4 +7,4 @@
  * @license MIT
  */
 
-export * from './query-builder';
+export * from './auto-query';

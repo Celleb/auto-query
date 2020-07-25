@@ -1,6 +1,12 @@
-# mongoorrhea
+# auto-query
+
+![Build](https://github.com/Celleb/auto-query/workflows/Build/badge.svg) ![Test](https://github.com/Celleb/auto-query/workflows/Test/badge.svg)
 
 Restful query builder for mongodb with mongoose using your url query
+
+```bash
+npm i @celleb/auto-query
+```
 
 ## Usage
 
@@ -46,15 +52,15 @@ const dictionary = {
 
 ### Create your model and instantiate the query builder
 
-The `QueryBuilder` takes a model and a dictionary.
+The `AutoQuery` takes a model and a dictionary.
 
 ```typescript
-import { QueryBuilder } from '@celleb/mongorrhea';
+import { AutoQuery } from '@celleb/auto-query';
 import mongoose from 'mongoose';
 
 const User = mongoose.model('User', userSchema);
 
-const qb = new QueryBuilder(User, dictionary);
+const qb = new AutoQuery(User, dictionary);
 ```
 
 ### Use the query builder instance in your route handler
@@ -64,7 +70,7 @@ The build method returns a `Mongoose` query and you can chain other methods befo
 
 ```typescript
 async function routHandler(req: Request, res: Response) {
- return res.json(res.qb.build(req.query).exec());
+ return res.json(await qb.build(req.query).exec());
 }
 ```
 
