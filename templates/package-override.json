@@ -1,5 +1,5 @@
 {
-  "name": "@celleb/mongoorrhea",
+  "name": "@celleb/auto-query",
   "main": "./index.js",
   "types": "./index.d.ts",
   "scripts": {},
